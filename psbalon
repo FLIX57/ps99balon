@@ -157,8 +157,11 @@ local saveMod = require(RepStor.Library.Client.Save)
 local BreakMod = require(RepStor.Library.Client.BreakableCmds)
 local Slingshot = getsenv(Player.PlayerScripts.Scripts.Game.Misc.Slingshot)
 local RAPValues = getupvalues(require(RepStor.Library).DevRAPCmds.Get)[1]
-
+hookfunction(require(game.ReplicatedStorage.Library.Client.PlayerPet).CalculateSpeedMultiplier, function() return 250 end)
 function getInfo(name) return saveMod.Get()[name] end 
+function getTool() return Player.Character:FindFirstChild("WEAPON_"..Player.Name, true) end
+function equipTool(toolName) return Library.Network.Invoke(toolName.."_Toggle") end
+function getCurrentZone() return Library["MapCmds"].GetCurrentZone() end
 
 function sendNotif(msg)
 	local message = {content = msg}
