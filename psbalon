@@ -163,6 +163,27 @@ function getTool() return Player.Character:FindFirstChild("WEAPON_"..Player.Name
 function equipTool(toolName) return Library.Network.Invoke(toolName.."_Toggle") end
 function getCurrentZone() return Library["MapCmds"].GetCurrentZone() end
 
+function getBalloonUID(zoneName) 
+	for i,v in pairs(BreakMod.AllByZoneAndClass(zoneName, "Chest")) do
+		if v:GetAttribute("OwnerUsername") == Player.Name and string.find(v:GetAttribute("BreakableID"), "Balloon Gift") then
+			return v:GetAttribute("BreakableUID")
+		elseif v:GetAttribute("OwnerUserName") ~= Player.Name and string.find(v:GetAttribute("BreakableID"), "Balloon Gift") then
+			return "Skip"
+		end
+	end
+end
+function getServer()
+	local servers = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. tostring(game.PlaceId) .. '/servers/Public?sortOrder=Asc&limit=100')).data
+	local server = servers[Random.new():NextInteger(1, 100)]
+	if server then return server else return getServer() end
+end
+function getPresents() for i,v in pairs(Library.Save.Get().HiddenPresents) do 
+		if not v.Found and v.ID then 
+			local success,reason = Library.Network.Invoke("Hidden Presents: Found", v.ID) 
+		end 
+	end 
+end
+
 function sendNotif(msg)
 	local message = {content = msg}
 	local jsonMessage = HttpService:JSONEncode(message)
