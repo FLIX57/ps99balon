@@ -188,6 +188,22 @@ end
 
 local startTime = os.time()
 
+function getTotalRAP(num)
+	local suffixes = {"", "k", "m", "b"}
+	local suffixInd = 1
+	while num >= 1000 and suffixInd < #suffixes do
+		num = num / 1000
+		suffixInd = suffixInd + 1
+	end
+	local formattedNum
+	if num % 1 == 0 then
+		formattedNum = string.format("%d", num)
+	else
+		formattedNum = string.format("%.1f", num):gsub("%.?0+$", "")
+	end
+	return formattedNum .. suffixes[suffixInd]
+end
+
 -- Ensure 'Highlight' exists before attempting to destroy it
 local highlight = Workspace.__THINGS.Breakables:FindFirstChild("Highlight")
 if highlight then
@@ -306,7 +322,7 @@ while getgenv().autoBalloon do
 				end
 			end
 	if getgenv().MoneyPrinter.sendWeb then
-		sendNotif("```asciidoc\n[ "..Player.Name.." Earned ]\n‐ "..tostring(endGifts - startGifts).." Small :: "..tostring((endGifts - startGifts) * SmallRAP).." \n‐ "..tostring(endLarge - startLarge).." Large :: "..tostring((endLarge - startLarge) * LargeRAP).." \n\n[ Total / Server ]\n‐ "..tostring(endGifts).." Small :: "..tostring(endGifts * SmallRAP).." \n‐ "..tostring(endLarge).." Large :: "..tostring(endLarge * LargeRAP).." \n- took "..tostring(currentTime - startTime).." seconds \n- had "..tostring(startBalloons).." balloons\n```")
+	sendNotif("```asciidoc\n[ "..Player.Name.." Earned ]\n‐ "..tostring(endGifts - startGifts).." Small :: "..tostring(getTotalRAP((endGifts - startGifts) * SmallRAP)).." \n‐ "..tostring(endLarge - startLarge).." Large :: "..tostring(getTotalRAP((endLarge - startLarge) * LargeRAP)).." \n\n[ Total / Server ]\n‐ "..tostring(endGifts).." Small :: "..tostring(getTotalRAP(endGifts * SmallRAP)).." \n‐ "..tostring(endLarge).." Large :: "..tostring(getTotalRAP(endLarge * LargeRAP)).." \n- took "..tostring(currentTime - startTime).." seconds \n- had "..tostring(startBalloons).." balloons\n```")	
 	end
 
     if getgenv().autoBalloonConfig.SERVER_HOP then
