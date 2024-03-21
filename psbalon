@@ -306,7 +306,7 @@ while getgenv().autoBalloon do
 				end
 			end
 	if getgenv().MoneyPrinter.sendWeb then
-		sendNotif("```asciidoc\n[ "..Player.Name.." Earned ]\n‐ "..tostring(endGifts - startGifts).." Small :: "..tostring(getTotalRAP((endGifts - startGifts) * SmallRAP)).." \n‐ "..tostring(endLarge - startLarge).." Large :: "..tostring(getTotalRAP((endLarge - startLarge) * LargeRAP)).." \n\n[ Total / Server ]\n‐ "..tostring(endGifts).." Small :: "..tostring(getTotalRAP(endGifts * SmallRAP)).." \n‐ "..tostring(endLarge).." Large :: "..tostring(getTotalRAP(endLarge * LargeRAP)).." \n- took "..tostring(currentTime - startTime).." seconds \n- had "..tostring(startBalloons).." balloons\n```")
+		sendNotif("```asciidoc\n[ "..Player.Name.." Earned ]\n‐ "..tostring(endGifts - startGifts).." Small :: "..tostring((endGifts - startGifts) * SmallRAP).." \n‐ "..tostring(endLarge - startLarge).." Large :: "..tostring((endLarge - startLarge) * LargeRAP).." \n\n[ Total / Server ]\n‐ "..tostring(endGifts).." Small :: "..tostring(endGifts * SmallRAP).." \n‐ "..tostring(endLarge).." Large :: "..tostring(endLarge * LargeRAP).." \n- took "..tostring(currentTime - startTime).." seconds \n- had "..tostring(startBalloons).." balloons\n```")
 	end
 
     if getgenv().autoBalloonConfig.SERVER_HOP then
