@@ -158,6 +158,7 @@ local BreakMod = require(RepStor.Library.Client.BreakableCmds)
 local Slingshot = getsenv(Player.PlayerScripts.Scripts.Game.Misc.Slingshot)
 local RAPValues = getupvalues(require(RepStor.Library).DevRAPCmds.Get)[1]
 
+function getInfo(name) return saveMod.Get()[name] end 
 
 function sendNotif(msg)
 	local message = {content = msg}
