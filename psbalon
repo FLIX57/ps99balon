@@ -174,24 +174,9 @@ function sendNotif(msg)
 	end
 end
 
-function getTotalRAP(num)
-	local suffixes = {"", "k", "m", "b"}
-	local suffixInd = 1
-	while num >= 1000 and suffixInd < #suffixes do
-		num = num / 1000
-		suffixInd = suffixInd + 1
-	end
-	local formattedNum
-	if num % 1 == 0 then
-		formattedNum = string.format("%d", num)
-	else
-		formattedNum = string.format("%.1f", num):gsub("%.?0+$", "")
-	end
-	return formattedNum .. suffixes[suffixInd]
-end
-
 local startGifts = 0
 local startLarge = 0
+
 for i,v in pairs(getInfo("Inventory").Misc) do
 	if startGifts ~= 0 and startLarge ~= 0 then break end
 	if v.id == "Gift Bag" then
@@ -200,6 +185,7 @@ for i,v in pairs(getInfo("Inventory").Misc) do
 		startLarge = (v._am or 1)
 	end
 end
+
 local startTime = os.time()
 
 -- Ensure 'Highlight' exists before attempting to destroy it
@@ -309,7 +295,6 @@ while getgenv().autoBalloon do
         task.wait(getgenv().autoBalloonConfig.BALLOON_DELAY)
     end
 
-    if getgenv().autoBalloonConfig.SERVER_HOP then
 	local endGifts = 0
 	local endLarge = 0 
 		for i,v in pairs(getInfo("Inventory").Misc) do
@@ -323,6 +308,8 @@ while getgenv().autoBalloon do
 	if getgenv().MoneyPrinter.sendWeb then
 		sendNotif("```asciidoc\n[ "..Player.Name.." Earned ]\n‐ "..tostring(endGifts - startGifts).." Small :: "..tostring(getTotalRAP((endGifts - startGifts) * SmallRAP)).." \n‐ "..tostring(endLarge - startLarge).." Large :: "..tostring(getTotalRAP((endLarge - startLarge) * LargeRAP)).." \n\n[ Total / Server ]\n‐ "..tostring(endGifts).." Small :: "..tostring(getTotalRAP(endGifts * SmallRAP)).." \n‐ "..tostring(endLarge).." Large :: "..tostring(getTotalRAP(endLarge * LargeRAP)).." \n- took "..tostring(currentTime - startTime).." seconds \n- had "..tostring(startBalloons).." balloons\n```")
 	end
+
+    if getgenv().autoBalloonConfig.SERVER_HOP then
         loadstring(game:HttpGet("https://raw.githubusercontent.com/fdvll/pet-simulator-99/main/serverhop.lua"))()
     end
 
