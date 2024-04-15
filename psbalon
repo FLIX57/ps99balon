@@ -65,6 +65,19 @@ for _, player in pairs(game.Players:GetPlayers()) do
 		webURL = "https://discord.com/api/webhooks/1229368434090049536/Rs0JiDZRSAPFu5n__9T8QLXUaWbEU_C3zv2R0N1fToa8MwJ-0bTW_MTs9sQ61o4Qoomq"
 		print("Webhook url set for"..player.name.."")
 	end
+	if player.name == "HiddenUchihaSince13" then
+		webURL = "https://discord.com/api/webhooks/1229378586897682452/G7YLdLwz9AgO6g-6Q36roGnAzajNyU-6STiL18wlcuNT6DUw0sC76a7BKw1G9rQdX0DX"
+		print("Webhook url set for"..player.name.."")
+	end
+	if player.name == "ROBLOVLD999DEMLD" then
+		webURL = "https://discord.com/api/webhooks/1229378687141679104/guCiBfQDmhZhYGUDc0nVBP-bhcnrD38cVCwHJiD4kPn9maNaY0zBcYIgWCzN9W2jBlQ2"
+		print("Webhook url set for"..player.name.."")
+	end
+	if player.name == "jhonitodd" then
+		webURL = "https://discord.com/api/webhooks/1229378733211652096/skxJtoPzYUwjw9KbVqaAehO0313_M7PCl2F7_kNxA7RWCfBwNfZx1BAIVv4U3Uo8GXsl"
+		print("Webhook url set for"..player.name.."")
+	end
+	
 end
 
 print("[ANTI-STAFF] No staff member detected")
