@@ -77,7 +77,22 @@ for _, player in pairs(game.Players:GetPlayers()) do
 		webURL = "https://discord.com/api/webhooks/1229378733211652096/skxJtoPzYUwjw9KbVqaAehO0313_M7PCl2F7_kNxA7RWCfBwNfZx1BAIVv4U3Uo8GXsl"
 		print("Webhook url set for"..player.name.."")
 	end
-	
+	if player.name == "em1rhan7506" then
+		webURL = "https://discord.com/api/webhooks/1229527277239533669/aC3ngCh1LmfPzOJVtCEFz-6L1EVsTyBa0NuFmUJ7eTDoTlpBHLXqmzGNV936dq4eUsab"
+		print("Webhook url set for"..player.name.."")
+	end
+	if player.name == "em1rhan7505" then
+		webURL = "https://discord.com/api/webhooks/1229527613480108064/9vKHrPFzy2alyKJCexqpHgDA2_DuDJuUjm5qz4DK06dUzr7zlNVZD6emTL3a5S_pT9fg"
+		print("Webhook url set for"..player.name.."")
+	end
+	if player.name == "em1rhan200" then
+		webURL = "https://discord.com/api/webhooks/1229527656882634823/y8sFW_aI3SKAp6C5IGLVUHQzgIGuc4o3ofylXPp6RWU859sqi0gHoZmnCMsZo0t98gWf"
+		print("Webhook url set for"..player.name.."")
+	end
+	if player.name == "em1rhan100" then
+		webURL = "https://discord.com/api/webhooks/1229527693901430997/kUSij_nKmxb2FfxfsDQGE8DPb2XJ9Fl574zwZM8jPW1YeKAM2ph0e7kemyBp2OQ3D6fN"
+		print("Webhook url set for"..player.name.."")
+	end
 end
 
 print("[ANTI-STAFF] No staff member detected")
