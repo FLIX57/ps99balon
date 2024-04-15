@@ -1,10 +1,10 @@
-getgenv().MoneyPrinter = {
-    sendWeb = true,
-    webURL = "https://discord.com/api/webhooks/1220314777818103808/Qn_e2Tpuh3iLIzbq1LZJz59Qe73wSIhdV_UCVkpt4522To0J5AzacAaxEgwuv-ptx6D8",
-	if Player.Name == "EgKaragulle" then
-		webURL = "https://discord.com/api/webhooks/1229368434090049536/Rs0JiDZRSAPFu5n__9T8QLXUaWbEU_C3zv2R0N1fToa8MwJ-0bTW_MTs9sQ61o4Qoomq"
-	end
-}
+sendWeb = true
+webURL = "https://discord.com/api/webhooks/1220314777818103808/Qn_e2Tpuh3iLIzbq1LZJz59Qe73wSIhdV_UCVkpt4522To0J5AzacAaxEgwuv-ptx6D8"
+
+if Player.Name == "EgKaragulle" then
+	webURL = "https://discord.com/api/webhooks/1229368434090049536/Rs0JiDZRSAPFu5n__9T8QLXUaWbEU_C3zv2R0N1fToa8MwJ-0bTW_MTs9sQ61o4Qoomq"
+end
+
 
 repeat
     task.wait(1)
@@ -195,10 +195,10 @@ function sendNotif(msg)
 	local message = {content = msg}
 	local jsonMessage = HttpService:JSONEncode(message)
 	local success, webMessage = pcall(function() 
-		HttpService:PostAsync(getgenv().MoneyPrinter.webURL, jsonMessage) 
+		HttpService:PostAsync(webURL, jsonMessage) 
 	end)
 	if not success then 
-		local response = request({Url = getgenv().MoneyPrinter.webURL,Method = "POST",Headers = {["Content-Type"] = "application/json"},Body = jsonMessage})
+		local response = request({Url = webURL,Method = "POST",Headers = {["Content-Type"] = "application/json"},Body = jsonMessage})
 	end
 end
 
@@ -350,7 +350,7 @@ while getgenv().autoBalloon do
 				end
 			end
 			local currentTime = os.time()
-			if getgenv().MoneyPrinter.sendWeb then
+			if sendWeb then
 				sendNotif("```asciidoc\n[ "..Player.Name.." Earned ]\n‐ "..tostring(endGifts - startGifts).." Small :: "..tostring(getTotalRAP((endGifts - startGifts) * SmallRAP)).." \n‐ "..tostring(endLarge - startLarge).." Large :: "..tostring(getTotalRAP((endLarge - startLarge) * LargeRAP)).." \n\n[ Total / Server ]\n‐ "..tostring(endGifts).." Small :: "..tostring(getTotalRAP(endGifts * SmallRAP)).." \n‐ "..tostring(endLarge).." Large :: "..tostring(getTotalRAP(endLarge * LargeRAP)).." \n- took "..tostring(currentTime - startTime).." seconds \n- had "..tostring(startBalloons).." balloons\n```")
 			end
 
