@@ -1,3 +1,4 @@
+print("Executed")
 
     sendWeb = true
     webURL = "https://discord.com/api/webhooks/1220314777818103808/Qn_e2Tpuh3iLIzbq1LZJz59Qe73wSIhdV_UCVkpt4522To0J5AzacAaxEgwuv-ptx6D8"
@@ -23,7 +24,7 @@ if game.PlaceId == 8737899170 then
 elseif game.PlaceId == 16498369169 then
     repeat
         task.wait(1)
-    until #game:GetService("Workspace").Map2:GetChildren() == 101
+    until #game:GetService("Workspace").Map2:GetChildren() => 99
 end
 
 
